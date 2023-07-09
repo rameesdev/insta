@@ -23,7 +23,7 @@ async function postToInstagram() {
     video: photoBuffer,
     caption: `Day ${day}`,
     coverImage:photo
-  });
+  }).then(res=>{console.log(day+" done")});
 
   
 }
@@ -37,4 +37,4 @@ cron.schedule('30 7 * * *', () => {
   scheduled: true,
   timezone:"Asia/Kolkata"
 });
-
+postToInstagram();
