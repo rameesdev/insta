@@ -18,9 +18,9 @@ async function postToInstagram() {
   console.log('Logged in successfully!');
 
   const photoBuffer = await readFile('rizz.mp4');
-  photoBuffer = JSON.parse(photoBuffer);
+  
   const photo = await readFile("download.jpg");
-  photo = JSON.parse(photo)
+  
   console.log(photoBuffer.byteLength)
  
 
