@@ -1,6 +1,9 @@
 const { IgApiClient } = require('instagram-private-api');
 const { readFile } = require('fs').promises;
-const cron = require("node-cron")
+const cron = require("node-cron");
+const express  = require("express");
+const app = express();
+
 require("dotenv").config();
 var day = 1;
 async function postToInstagram() {
@@ -39,4 +42,9 @@ cron.schedule('30 7 * * *', () => {
   scheduled: true,
   timezone:"Asia/Kolkata"
 });
-postToInstagram();
+app.get("/rizz/run",(req,res=>{
+  
+  postToInstagram().then((resp)=>{console.log("done");res.send("done");});
+}))
+
+app.listen(3000,res=>console.log("server on"));
