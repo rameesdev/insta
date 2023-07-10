@@ -5,7 +5,7 @@ const express= require("express");
 const app = express();
 
 require("dotenv").config();
-var day = 1;
+var day = 2;
 async function postToInstagram() {
   const ig = new IgApiClient();
   const username = process.env.IG_USERNAME;
@@ -31,18 +31,9 @@ async function postToInstagram() {
   }).then(res=>{console.log(day+" done")});
 
   
-}
 
-
-
-cron.schedule('30 7 * * *', () => {
-  day++;
- postToInstagram()
-},{
-  scheduled: true,
-  timezone:"Asia/Kolkata"
-});
 app.get("/rizz/run",(req,res)=>{
+  day++;
   
   postToInstagram().then((resp)=>{console.log("done");res.send("done");});
 })
